@@ -1,8 +1,8 @@
-from sklearn.model_selection import train_test_split
-
 from classification_model.config.core import config
 from classification_model.pipeline import titanic_pipe
-from classification_model.processing.data_manager import load_dataset, save_pipeline
+from classification_model.processing.data_manager import (load_dataset,
+                                                          save_pipeline)
+from sklearn.model_selection import train_test_split
 
 
 def run_training() -> None:
@@ -26,6 +26,7 @@ def run_training() -> None:
         random_state=config.model_config.random_state,
     )
 
+    # NOTE we use the unfitted titanic_pipe at this stage and THEN save it
     # fit model
     titanic_pipe.fit(X_train, y_train)
 
